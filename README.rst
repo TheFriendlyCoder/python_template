@@ -33,3 +33,21 @@ Overview
     :alt: GPL License
 
 Project Short Description
+
+How to use this project:
+ * clone the project files
+ * update all references to 'proj_name' in all files to the name of the new project
+ * rename the 'proj_name' subfolder to reflect the new project name
+ * log in to travis-ci.org and activate the new project
+ * log in to readthedocs.org and activate the new project
+ * log in to coveralls.io and activate the new project
+ * log in to requires.io and activate the new project
+ * to make some of the badges work you'll need to upload a version to pypi: python setup.py bdist_wheel && twine upload ./dist/*.whl
+ * update the project specific parameters in the setup.py file in the root folder
+
+TIPS:
+ * make sure your project name doeesn't use underscores because pypi packages will convert them to dashes
+ * 
+
+Links:
+ * badge related blog: http://thomas-cokelaer.info/blog/2014/08/1013/
