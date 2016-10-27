@@ -38,12 +38,12 @@ pip-delete-this-directory.txt
 htmlcov/
 .tox/
 .coverage
-.coverage.*
 .cache
 nosetests.xml
 coverage.xml
 *,cover
 .hypothesis/
+test_results.xml
 
 # Translations
 *.mo
@@ -87,3 +87,12 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# temp files
+*~
+*.bak
+*.swp
+
+# pycharm config files
+/.idea/workspace.xml
+/.idea/tasks.xml
