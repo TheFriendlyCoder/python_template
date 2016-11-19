@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 from setuptools import setup, find_packages
 import os
 from distutils.util import convert_path
@@ -56,7 +56,7 @@ def load_console_scripts(project):
 
     return retval
 
-project_packages = find_packages(where=project_name)
+project_packages = find_packages(where='.', include=project_name)
 
 # Import package version
 version_ns = {}
