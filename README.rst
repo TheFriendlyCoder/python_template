@@ -94,8 +94,7 @@ TIPS
 * make sure your project name doeesn't use underscores because pypi packages will convert them to dashes
 * to make some of the badges work you'll need to upload a version to pypi
 * you need to generate a package first before using twine to upload it to pypi
-* all development work should be done in a local virtual environment under a ./venv subfolder (ie: :code:`virtualenv -p
-python3 ./venv && . ./venv/bin/activate` )
+* all development work should be done in a local virtual environment under a ./venv subfolder (ie: :code:`virtualenv -p python3 ./venv && . ./venv/bin/activate` )
 * you can add PyCharm projects to the repo. Just exclude the files listed in the .gitignore file.
 
 Links
