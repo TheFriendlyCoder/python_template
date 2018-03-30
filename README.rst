@@ -43,6 +43,12 @@ Creating a new project:
    * log in to the Travis CI website
    * hover over your avatar in the top-right corner and select 'profile'
    * find your project in the list and click the slider to turn on support
+   * click the small cog icon next to your new project to configure settings
+   * Enable the "Only build if a .travisci-.yml file is present" setting
+   * Under environment variabls, define the following variables (needed to publish Python packages):
+     * *DEPLOY_USER* User name to log in to PyPI package repository
+     * *DEPLOY_PASS* Password for the PyPI user
+   * Under cron set the master branch to build once a month, so long as no build has run within 24 hours
    * so long as your project has a .travisci.yml file in the root folder the build should automatically start
  * activate project on `readthedocs.org <https://readthedocs.org/>`_
    * log in to the ReadTheDocs website
