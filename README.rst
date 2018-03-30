@@ -32,9 +32,9 @@ Overview
     :target: https://www.gnu.org/licenses/gpl-3.0-standalone.html
     :alt: GPL License
 
-Project Short Description
+Creating a new project
+-----------------------
 
-Creating a new project:
  * clone the project files
  * update all references to 'proj_name' in all files to the name of the new project
  * rename the 'proj_name' subfolder to reflect the new project name
@@ -77,7 +77,9 @@ Creating a new project:
    * DistUtils project short description in the setup.py
    * first line of the readme.rst
 
-Using the project;
+Using the project
+-----------------
+
 * to generate a package do the following: :code:`python setup.py bdist_wheel`
 * to upload a new version to pypi, do the following: :code:`twine upload ./dist/*.whl`
 * update API docs as follows: :code:`sphinx-apidoc --force --separate -o ./docs proj_name`
@@ -85,7 +87,9 @@ Using the project;
 * make sure to add any new project dependencies to the setup.py as requirements change
 * make sure to separate out development dependencies from runtime dependencies
 
-TIPS:
+TIPS
+----
+
 * make sure your project name doeesn't use underscores because pypi packages will convert them to dashes
 * to make some of the badges work you'll need to upload a version to pypi
 * you need to generate a package first before using twine to upload it to pypi
@@ -93,5 +97,7 @@ TIPS:
 python3 ./venv && . ./venv/bin/activate)
 * you can add PyCharm projects to the repo. Just exclude the files listed in the .gitignore file.
 
-Links:
+Links
+-----
+
 * badge related blog: http://thomas-cokelaer.info/blog/2014/08/1013/
