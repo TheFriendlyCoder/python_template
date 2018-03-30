@@ -91,7 +91,8 @@ Using the project
 TIPS
 ----
 
-* make sure your project name doeesn't use underscores because pypi packages will convert them to dashes
+* make sure your project name doeesn't use underscores in the name because pypi packages will convert them to dashes when being published which creates a subtle discrepancy between the module name and the package name, which can lead to confusion
+* make sure your project name doesn't use dashes in the name because you'll need to name your module with the dash for consistency but then the project will fail the PEP8 validation check because the name doesn't satisfy the snake-case naming requirements.
 * to make some of the badges work you'll need to upload a version to pypi
 * you need to generate a package first before using twine to upload it to pypi
 * all development work should be done in a local virtual environment under a ./venv subfolder (ie: :code:`virtualenv -p python3 ./venv && . ./venv/bin/activate` )
