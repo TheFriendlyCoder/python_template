@@ -51,7 +51,7 @@ Creating a new project:
     * first line of the readme.rst
 
 Using the project;
- * to generate a package do the following: python setup.py bdist_wheel
+ * to generate a package do the following: `python setup.py bdist_wheel`
  * to upload a new version to pypi, do the following: twine upload ./dist/*.whl
  * update API docs as follows: sphinx-apidoc --force --separate -o ./docs proj_name
  * to generate HTML docs run the following from the root folder: python setup.py build_sphinx
