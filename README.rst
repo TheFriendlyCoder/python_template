@@ -52,9 +52,9 @@ Creating a new project:
 
 Using the project;
  * to generate a package do the following: :code:`python setup.py bdist_wheel`
- * to upload a new version to pypi, do the following: twine upload ./dist/*.whl
- * update API docs as follows: sphinx-apidoc --force --separate -o ./docs proj_name
- * to generate HTML docs run the following from the root folder: python setup.py build_sphinx
+ * to upload a new version to pypi, do the following: :code:`twine upload ./dist/*.whl`
+ * update API docs as follows: :code:`sphinx-apidoc --force --separate -o ./docs proj_name`
+ * to generate HTML docs run the following from the root folder: :code:`python setup.py build_sphinx`
  * make sure to add any new project dependencies to the setup.py as requirements change
  * make sure to separate out development dependencies from runtime dependencies
 
