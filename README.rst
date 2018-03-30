@@ -1,5 +1,6 @@
 Overview
 ========
+
 .. image:: https://travis-ci.org/TheFriendlyCoder/proj_name.svg?branch=master
     :target: https://travis-ci.org/TheFriendlyCoder/proj_name
     :alt: Build Automation
@@ -35,47 +36,47 @@ Overview
 Creating a new project
 -----------------------
 
- * clone the project files
- * update all references to 'proj_name' in all files to the name of the new project
- * rename the 'proj_name' subfolder to reflect the new project name
- * update the project specific parameters in the setup.py file in the root folder
- * activate project on `travis-ci.org <https://travis-ci.org/>`_
+* clone the project files
+* update all references to 'proj_name' in all files to the name of the new project
+* rename the 'proj_name' subfolder to reflect the new project name
+* update the project specific parameters in the setup.py file in the root folder
+* activate project on `travis-ci.org <https://travis-ci.org/>`_
  
-   * log in to the Travis CI website
-   * hover over your avatar in the top-right corner and select 'profile'
-   * find your project in the list and click the slider to turn on support
-   * click the small cog icon next to your new project to configure settings
-   * Enable the "Only build if a .travisci-.yml file is present" setting
-   * Under environment variabls, define the following variables (needed to publish Python packages):
-   
-     * *DEPLOY_USER* User name to log in to PyPI package repository
-     * *DEPLOY_PASS* Password for the PyPI user
+  * log in to the Travis CI website
+  * hover over your avatar in the top-right corner and select 'profile'
+  * find your project in the list and click the slider to turn on support
+  * click the small cog icon next to your new project to configure settings
+  * Enable the "Only build if a .travisci-.yml file is present" setting
+  * Under environment variabls, define the following variables (needed to publish Python packages):
+    
+    * *DEPLOY_USER* User name to log in to PyPI package repository
+    * *DEPLOY_PASS* Password for the PyPI user
      
-   * Under cron set the master branch to build once a month, so long as no build has run within 24 hours
-   * so long as your project has a .travisci.yml file in the root folder the build should automatically start
+  * Under cron set the master branch to build once a month, so long as no build has run within 24 hours
+  * so long as your project has a .travisci.yml file in the root folder the build should automatically start
    
- * activate project on `readthedocs.org <https://readthedocs.org/>`_
+* activate project on `readthedocs.org <https://readthedocs.org/>`_
  
-   * log in to the ReadTheDocs website
-   * click the drop-down list on your name in the top-left corner and select "My Projects"
-   * click "Import a Project"
-   * To import automatically, try clicking the "Refresh" button to load your Github projects, and select the one(s) to load
-   * To import manually, click "Import Manually"
-   * Under "Name of Project" enter the name of the Github project without the URL or .git extension
-   * Under the "Repository URL" field, copy-paste the HTTPS URL used for cloning the Github project
-   * Check the "Advanced Options" check box and click "Next"
-   * Fill out the advanced properties as desired
-   * TBD: Travis / Github integration
+  * log in to the ReadTheDocs website
+  * click the drop-down list on your name in the top-left corner and select "My Projects"
+  * click "Import a Project"
+  * To import automatically, try clicking the "Refresh" button to load your Github projects, and select the one(s) to load
+  * To import manually, click "Import Manually"
+  * Under "Name of Project" enter the name of the Github project without the URL or .git extension
+  * Under the "Repository URL" field, copy-paste the HTTPS URL used for cloning the Github project
+  * Check the "Advanced Options" check box and click "Next"
+  * Fill out the advanced properties as desired
+  * TBD: Travis / Github integration
  
- * log in to coveralls.io and activate the new project
- * log in to requires.io and activate the new project
- * modify the 'fail_under' value in the .coveragerc file to a reasonable value for unit test coverage (ie: 90% say)
- * For consistency, set the following to the same 'short descriptive' text for the project:
+* log in to coveralls.io and activate the new project
+* log in to requires.io and activate the new project
+* modify the 'fail_under' value in the .coveragerc file to a reasonable value for unit test coverage (ie: 90% say)
+* For consistency, set the following to the same 'short descriptive' text for the project:
  
-   * title on GitHub project
-   * description of readthedocs page
-   * DistUtils project short description in the setup.py
-   * first line of the readme.rst
+  * title on GitHub project
+  * description of readthedocs page
+  * DistUtils project short description in the setup.py
+  * first line of the readme.rst
 
 Using the project
 -----------------
