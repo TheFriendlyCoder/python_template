@@ -68,7 +68,7 @@ Creating a new project
   * Fill out the advanced properties as desired
   * TBD: Travis / Github integration
  
-* activate project on `coveralls.io https://coveralls.io/>`_ 
+* activate project on `coveralls.io <https://coveralls.io/>`_ 
 
   * click "add repo"
   * search for new repo in the list
