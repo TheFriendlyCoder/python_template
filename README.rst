@@ -68,7 +68,12 @@ Creating a new project
   * Fill out the advanced properties as desired
   * TBD: Travis / Github integration
  
-* log in to coveralls.io and activate the new project
+* activate project on `coveralls.io https://coveralls.io/>`_ 
+
+  * click "add repo"
+  * search for new repo in the list
+  * click the "on" button to enable coverage analysis
+  
 * log in to requires.io and activate the new project
 * modify the 'fail_under' value in the .coveragerc file to a reasonable value for unit test coverage (ie: 90% say)
 * For consistency, set the following to the same 'short descriptive' text for the project:
