@@ -70,11 +70,19 @@ Creating a new project
  
 * activate project on `coveralls.io <https://coveralls.io/>`_ 
 
+  * log in to the coveralls dashboard
   * click "add repo"
   * search for new repo in the list
   * click the "on" button to enable coverage analysis
   
-* log in to requires.io and activate the new project
+* activate project on `requires.io <https://requires.io>`_
+
+  * log in to the requires dashboard
+  * click on the "repositories" button at the top
+  * wait for the project list to refresh and show your new project
+  * click the "Activate" button next to your repo
+  * TBD: See if I need to set up a webhook to get this working
+  
 * modify the 'fail_under' value in the .coveragerc file to a reasonable value for unit test coverage (ie: 90% say)
 * For consistency, set the following to the same 'short descriptive' text for the project:
  
@@ -91,12 +99,11 @@ Using the project
 * update API docs as follows: :code:`sphinx-apidoc --force --separate -o ./docs proj_name`
 * to generate HTML docs run the following from the root folder: :code:`python setup.py build_sphinx`
 * make sure to add any new project dependencies to the setup.py as requirements change
-* make sure to separate out development dependencies from runtime dependencies
 
 TIPS
 ----
 
-* make sure your project name doeesn't use underscores in the name because pypi packages will convert them to dashes when being published which creates a subtle discrepancy between the module name and the package name, which can lead to confusion
+* make sure your project name doesn't use underscores in the name because pypi packages will convert them to dashes when being published which creates a subtle discrepancy between the module name and the package name, which can lead to confusion
 * make sure your project name doesn't use dashes in the name because you'll need to name your module with the dash for consistency but then the project will fail the PEP8 validation check because the name doesn't satisfy the snake-case naming requirements.
 * to make some of the badges work you'll need to upload a version to pypi
 * you need to generate a package first before using twine to upload it to pypi
