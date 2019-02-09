@@ -2,12 +2,11 @@ language: python
 sudo: false  # enable container-based build
 python:
   - 2.7
-  - 3.3
   - 3.4
   - 3.5
-
+  - 3.6
+  -
 install:
-  - if [[ $TRAVIS_PYTHON_VERSION == 3.3 ]]; then pip install virtualenv==15.2.0 tox==3.1.3; fi
   - pip install tox
   - pip install python-coveralls
 
