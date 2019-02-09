@@ -20,6 +20,7 @@ PROJECT_DEV_DEPENDENCIES = [
     'tox']
 PROJECT_DESCRIPTION = 'Project Short Description'
 PROJECT_KEYWORDS = 'space separated tags'
+PROJECT_SUPPORTED_PYTHON_VERSION = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, <4"
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
@@ -155,17 +156,17 @@ setup(
         'console_scripts': load_console_scripts(PROJECT_NAME)
     },
     install_requires=PROJECT_DEPENDENCIES,
+    python_requires=PROJECT_SUPPORTED_PYTHON_VERSION,
     extras_require={
         'dev': PROJECT_DEV_DEPENDENCIES
     },
+    # https://pypi.org/classifiers/
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Environment :: Console",
+        "Topic :: Software Development :: Libraries",
         "Natural Language :: English",
         "Operating System :: OS Independent",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.3",
-        "Programming Language :: Python :: 3.4",
-        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python"
     ]
 )
