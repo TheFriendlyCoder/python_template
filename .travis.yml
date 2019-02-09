@@ -13,7 +13,7 @@ install:
 
 script:
   - echo $TRAVIS_PYTHON_VERSION
-  - export PYVER=`echo $TRAVIS_PYTHON_VERSION | tr "." "\n" | head -n 1`
+  - export PYVER=`echo $TRAVIS_PYTHON_VERSION | tr "." "\n" | head -n 1 | sed 's/^py//'`
   - echo $PYVER
   - tox -e py$PYVER
 
