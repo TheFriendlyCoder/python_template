@@ -20,7 +20,8 @@ PROJECT_DEV_DEPENDENCIES = [
     'tox']
 PROJECT_DESCRIPTION = 'Project Short Description'
 PROJECT_KEYWORDS = 'space separated tags'
-PROJECT_SUPPORTED_PYTHON_VERSION = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, <4"
+PROJECT_SUPPORTED_PYTHON_VERSION = \
+    ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, <4"
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
