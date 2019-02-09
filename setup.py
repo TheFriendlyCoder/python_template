@@ -73,7 +73,7 @@ def load_console_scripts(project):
     return retval
 
 
-def verify_version(version):
+def _verify_src_version(version):
     """Checks to make sure an arbitrary character string is a valid version id
 
     Version numbers are expected to be of the form X.Y.Z
@@ -96,7 +96,7 @@ def verify_version(version):
     return True
 
 
-def load_version(project):
+def _src_version(project):
     """Parses the version number from the source project
 
     :param str project: the name of the project to get the version for
@@ -137,14 +137,37 @@ def load_version(project):
         break
 
     assert retval is not None
-    assert verify_version(retval)
+    assert _verify_src_version(retval)
     return retval
 
+
+def get_version_number(project):
+    """Retrieves the version number for a project"""
+
+    retval = _src_version(project)
+
+    if 'TRAVIS_TAG' in os.environ and not os.environ['TRAVIS_TAG'] == '':
+        # make sure the tag name matches our version number
+        if not os.environ['TRAVIS_TAG'] == retval:
+            raise Exception("Tag {0} is expected to be {1}".format(
+                os.environ['TRAVIS_TAG'],
+                retval
+            ))
+        # If we build from a tag, just use the version number verbatim
+        return retval
+
+    # if 'TRAVIS_BUILD_NUMBER' in os.environ:
+    #     retval += "." + os.environ['TRAVIS_BUILD_NUMBER']
+
+    # Pre release versions need a non-numeric suffix on the version number
+    retval += ".dev0"
+
+    return retval
 
 # Execute packaging logic
 setup(
     name=PROJECT_NAME,
-    version=load_version(PROJECT_NAME),
+    version=get_version_number(PROJECT_NAME),
     author='Kevin S. Phillips',
     author_email='thefriendlycoder@gmail.com',
     packages=find_packages('src'),
