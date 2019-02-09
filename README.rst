@@ -38,25 +38,25 @@ Creating a new project
 
 * clone the project files
 * update all references to 'proj_name' in all files to the name of the new project
-* rename the 'proj_name' subfolder to reflect the new project name
+* rename the 'src/proj_name' subfolder to reflect the new project name
 * update the project specific parameters in the setup.py file in the root folder
 * activate project on `travis-ci.org <https://travis-ci.org/>`_
- 
+
   * log in to the Travis CI website
   * hover over your avatar in the top-right corner and select 'profile'
   * find your project in the list and click the slider to turn on support
   * click the small cog icon next to your new project to configure settings
   * Enable the "Only build if a .travisci-.yml file is present" setting
-  * Under environment variabls, define the following variables (needed to publish Python packages):
-    
+  * Under environment variables, define the following variables (needed to publish Python packages):
+
     * *DEPLOY_USER* User name to log in to PyPI package repository
     * *DEPLOY_PASS* Password for the PyPI user
-     
+
   * Under cron set the master branch to build once a month, so long as no build has run within 24 hours
   * so long as your project has a .travisci.yml file in the root folder the build should automatically start
-   
+
 * activate project on `readthedocs.org <https://readthedocs.org/>`_
- 
+
   * log in to the ReadTheDocs website
   * click the drop-down list on your name in the top-left corner and select "My Projects"
   * click "Import a Project"
@@ -67,14 +67,14 @@ Creating a new project
   * Check the "Advanced Options" check box and click "Next"
   * Fill out the advanced properties as desired
   * TBD: Travis / Github integration
- 
-* activate project on `coveralls.io <https://coveralls.io/>`_ 
+
+* activate project on `coveralls.io <https://coveralls.io/>`_
 
   * log in to the coveralls dashboard
   * click "add repo"
   * search for new repo in the list
   * click the "on" button to enable coverage analysis
-  
+
 * activate project on `requires.io <https://requires.io>`_
 
   * log in to the requires dashboard
@@ -82,10 +82,10 @@ Creating a new project
   * wait for the project list to refresh and show your new project
   * click the "Activate" button next to your repo
   * TBD: See if I need to set up a webhook to get this working
-  
+
 * modify the 'fail_under' value in the .coveragerc file to a reasonable value for unit test coverage (ie: 90% say)
 * For consistency, set the following to the same 'short descriptive' text for the project:
- 
+
   * title on GitHub project
   * description of readthedocs page
   * DistUtils project short description in the setup.py
