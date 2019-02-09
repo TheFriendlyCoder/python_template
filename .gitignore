@@ -95,3 +95,6 @@ ENV/
 
 # pycharm config files
 /.idea
+
+# VS Code
+/.vscode
