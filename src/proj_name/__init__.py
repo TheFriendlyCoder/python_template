@@ -1,5 +1,5 @@
 """Project Short Description"""
 import logging
-import proj_name.version
+from .version import __version__
 
 logging.getLogger(__name__).addHandler(logging.NullHandler())
