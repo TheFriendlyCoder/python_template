@@ -43,16 +43,17 @@ Creating a new project
 * activate project on `travis-ci.org <https://travis-ci.org/>`_
 
   * log in to the Travis CI website
-  * hover over your avatar in the top-right corner and select 'profile'
+  * hover over your avatar in the top-right corner and select 'settings'
+  * click the "sync account" button in the left side-bar
+  * refresh your browser page to make sure your list of projects is up to date
   * find your project in the list and click the slider to turn on support
   * click the small cog icon next to your new project to configure settings
-  * Enable the "Only build if a .travisci-.yml file is present" setting
   * Under environment variables, define the following variables (needed to publish Python packages):
 
     * *DEPLOY_USER* User name to log in to PyPI package repository
     * *DEPLOY_PASS* Password for the PyPI user
 
-  * Under cron set the master branch to build once a month, so long as no build has run within 24 hours
+  * Under cron set the master branch to build once a month
   * so long as your project has a .travisci.yml file in the root folder the build should automatically start
 
 * activate project on `readthedocs.org <https://readthedocs.org/>`_
@@ -66,7 +67,6 @@ Creating a new project
   * Under the "Repository URL" field, copy-paste the HTTPS URL used for cloning the Github project
   * Check the "Advanced Options" check box and click "Next"
   * Fill out the advanced properties as desired
-  * TBD: Travis / Github integration
 
 * activate project on `coveralls.io <https://coveralls.io/>`_
 
