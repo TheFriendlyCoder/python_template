@@ -1,5 +1,5 @@
 language: python
-# sudo: false  # enable container-based build
+
 python:
   - 2.7
   - 3.4
@@ -12,6 +12,7 @@ install:
   - pip install tox twine wheel python-coveralls
 
 script:
+  - echo $TRAVIS_PYTHON_VERSION
   - export PYVER=`echo $TRAVIS_PYTHON_VERSION | tr "." "\n" | head -n 1`
   - echo $PYVER
   - tox -e py$PYVER
