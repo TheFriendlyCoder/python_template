@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 # project specific parameters
-PROJECT_NAME = 'proj_name'
+PROJECT_NAME = 'ksp_sample'
 PROJECT_DEPENDENCIES = [
     'six'
 ]

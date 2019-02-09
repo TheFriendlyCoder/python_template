@@ -1,4 +1,4 @@
-import proj_name as proj_to_test
+import ksp_sample as proj_to_test
 import pytest
 
 

@@ -1,35 +1,35 @@
 Overview
 ========
 
-.. image:: https://travis-ci.org/TheFriendlyCoder/proj_name.svg?branch=master
-    :target: https://travis-ci.org/TheFriendlyCoder/proj_name
+.. image:: https://travis-ci.org/TheFriendlyCoder/ksp_sample.svg?branch=master
+    :target: https://travis-ci.org/TheFriendlyCoder/ksp_sample
     :alt: Build Automation
 
-.. image:: https://coveralls.io/repos/github/TheFriendlyCoder/proj_name/badge.svg?branch=master
-    :target: https://coveralls.io/github/TheFriendlyCoder/proj_name?branch=master
+.. image:: https://coveralls.io/repos/github/TheFriendlyCoder/ksp_sample/badge.svg?branch=master
+    :target: https://coveralls.io/github/TheFriendlyCoder/ksp_sample?branch=master
     :alt: Test Coverage
 
-.. image:: https://img.shields.io/pypi/pyversions/proj_name.svg
-    :target: https://pypi.python.org/pypi/proj_name
+.. image:: https://img.shields.io/pypi/pyversions/ksp_sample.svg
+    :target: https://pypi.python.org/pypi/ksp_sample
     :alt: Python Versions
 
-.. image:: https://readthedocs.org/projects/proj_name/badge/?version=latest
-    :target: http://proj_name.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/ksp_sample/badge/?version=latest
+    :target: http://ksp_sample.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
-.. image:: https://requires.io/github/TheFriendlyCoder/proj_name/requirements.svg?branch=master
-     :target: https://requires.io/github/TheFriendlyCoder/proj_name/requirements/?branch=master
+.. image:: https://requires.io/github/TheFriendlyCoder/ksp_sample/requirements.svg?branch=master
+     :target: https://requires.io/github/TheFriendlyCoder/ksp_sample/requirements/?branch=master
      :alt: Requirements Status
 
-.. image:: https://img.shields.io/pypi/format/proj_name.svg
-    :target: https://pypi.python.org/pypi/proj_name/
+.. image:: https://img.shields.io/pypi/format/ksp_sample.svg
+    :target: https://pypi.python.org/pypi/ksp_sample/
     :alt: Package Format
 
-.. image:: https://img.shields.io/pypi/dm/proj_name.svg
-    :target: https://pypi.python.org/pypi/proj_name/
+.. image:: https://img.shields.io/pypi/dm/ksp_sample.svg
+    :target: https://pypi.python.org/pypi/ksp_sample/
     :alt: Download Count
 
-.. image:: https://img.shields.io/pypi/l/proj_name.svg
+.. image:: https://img.shields.io/pypi/l/ksp_sample.svg
     :target: https://www.gnu.org/licenses/gpl-3.0-standalone.html
     :alt: GPL License
 
@@ -37,8 +37,14 @@ Creating a new project
 -----------------------
 
 * clone the project files
-* update all references to 'proj_name' in all files to the name of the new project
-* rename the 'src/proj_name' subfolder to reflect the new project name
+* update all references to 'ksp_sample' in all files to the name of the new project
+  * ./docs/conf.py
+  * ./setup.py
+  * ./tox.ini
+  * ./README.rst
+  * ./.travis.yml
+  * ./tests/test_version.py
+* rename the 'src/ksp_sample' subfolder to reflect the new project name
 * update the project specific parameters in the setup.py file in the root folder
 * activate project on `travis-ci.org <https://travis-ci.org/>`_
 

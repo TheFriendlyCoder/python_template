@@ -52,7 +52,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'proj_name'
+project = 'ksp_sample'
 copyright = '2016, Kevin S. Phillips'
 author = 'Kevin S. Phillips'
 
@@ -60,9 +60,9 @@ author = 'Kevin S. Phillips'
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
-import proj_name.version
+import ksp_sample.version
 # The short X.Y version.
-version = proj_name.version.__version__
+version = ksp_sample.version.__version__
 # The full version, including alpha/beta/rc tags.
 release = version
 
