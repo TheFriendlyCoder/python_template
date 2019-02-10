@@ -68,9 +68,8 @@ Using the project
 
 * to generate a package do the following: :code:`python setup.py bdist_wheel`
 * uploading of new versions to pypi is handled automatically via Travis CI
-* generating up to date API docs is handled automatically by tox
-* to generate HTML docs run the following from the root folder:
-  :code:`python setup.py build_sphinx`
+* Updating the API docs and generating sample HTML output is done as follows:
+  :code:`tox -e py3-docs`
 * make sure to add any new project dependencies to the project.prop file
   as requirements change
 
