@@ -1,8 +1,8 @@
 Overview
 ========
 
-.. image:: https://travis-ci.org/TheFriendlyCoder/ksp_sample.svg?branch=master
-    :target: https://travis-ci.org/TheFriendlyCoder/ksp_sample
+.. image:: https://travis-ci.org/TheFriendlyCoder/python_template.svg?branch=master
+    :target: https://travis-ci.org/TheFriendlyCoder/python_template
     :alt: Build Automation
 
 .. image:: https://coveralls.io/repos/github/TheFriendlyCoder/python_template/badge.svg?branch=master
