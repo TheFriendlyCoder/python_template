@@ -1,0 +1,23 @@
+# This file contains a single dictionary definition containing all of the
+# project-specific customization options supported by this template. It is
+# parsed by the setup.py at build time.
+{
+    "NAME" : "ksp_sample",
+    "REPO" : "python_template",
+    "DEPENDENCIES" : [
+        'six'
+    ],
+    "DEV_DEPENDENCIES" : [
+        "twine",
+        "pytest",
+        "pytest-cov",
+        "mock",
+        "pylint",
+        "sphinx",
+        "tox",
+    ],
+    "DESCRIPTION" : "Project Short Description",
+    "KEYWORDS" : "space separated tags",
+    "SUPPORTED_PYTHON_VERSION" :
+        ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, <4",
+}

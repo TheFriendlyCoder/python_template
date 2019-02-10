@@ -12,18 +12,11 @@ Creating a new project
 * update all references to 'ksp_sample' in all files to the name of the new project
 
   * ./docs/conf.py
-  * ./setup.py
   * ./tox.ini
-  * ./README.rst
-  * ./.travis.yml
   * ./tests/test_version.py
 
-* update all references to "python_template" in all files to the name of the new project
-
-  * ./README.rst
-
 * rename the 'src/ksp_sample' subfolder to reflect the new project name
-* update the project specific parameters in the setup.py file in the root folder
+* update the project specific parameters in the 'project.prop' file in the root folder
 * activate project on `travis-ci.org <https://travis-ci.org/>`_
 
   * log in to the Travis CI website

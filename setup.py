@@ -4,27 +4,6 @@ import os
 import ast
 from setuptools import setup, find_packages
 
-# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-# project specific parameters
-PROJECT_NAME = 'ksp_sample'
-PROJECT_REPO = 'python_template'
-PROJECT_DEPENDENCIES = [
-    'six'
-]
-PROJECT_DEV_DEPENDENCIES = [
-    'twine',
-    'pytest',
-    'pytest-cov',
-    'mock',
-    'pylint',
-    'sphinx',
-    'tox']
-PROJECT_DESCRIPTION = 'Project Short Description'
-PROJECT_KEYWORDS = 'space separated tags'
-PROJECT_SUPPORTED_PYTHON_VERSION = \
-    ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, <4"
-# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
 
 def load_console_scripts(project):
     """Generates list of 'entry point' functions for use by Python setup tools
@@ -243,30 +222,44 @@ def generate_readme(project, repo=None, version=None):
     return retval
 
 
+def load_project_properties():
+    """Loads project specific properties from the project.prop file
+
+    :returns: project properties
+    :rtype: :class:`dict`
+    """
+    cur_file = os.path.realpath(__file__)
+    cur_path = os.path.split(cur_file)[0]
+    props = open(os.path.join(cur_path, 'project.prop')).read()
+    return ast.literal_eval(props)
+
+
+PROJECT = load_project_properties()
+PROJECT["VERSION"] = get_version_number(PROJECT["NAME"])
+
 # Execute packaging logic
-PROJECT_VERSION = get_version_number(PROJECT_NAME)
 setup(
-    name=PROJECT_NAME,
-    version=PROJECT_VERSION,
+    name=PROJECT["NAME"],
+    version=PROJECT["VERSION"],
     author='Kevin S. Phillips',
     author_email='thefriendlycoder@gmail.com',
     packages=find_packages('src'),
     package_dir={'': 'src'},
-    description=PROJECT_DESCRIPTION,
+    description=PROJECT["DESCRIPTION"],
     long_description=
-    generate_readme(PROJECT_NAME, PROJECT_REPO, PROJECT_VERSION),
-    url='https://github.com/TheFriendlyCoder/' + PROJECT_NAME,
-    keywords=PROJECT_KEYWORDS,
+    generate_readme(PROJECT["NAME"], PROJECT["REPO"], PROJECT["VERSION"]),
+    url='https://github.com/TheFriendlyCoder/' + PROJECT["NAME"],
+    keywords=PROJECT["KEYWORDS"],
     entry_points={
-        'console_scripts': load_console_scripts(PROJECT_NAME)
+        'console_scripts': load_console_scripts(PROJECT["NAME"])
     },
-    install_requires=PROJECT_DEPENDENCIES,
-    python_requires=PROJECT_SUPPORTED_PYTHON_VERSION,
+    install_requires=PROJECT["DEPENDENCIES"],
+    python_requires=PROJECT["SUPPORTED_PYTHON_VERSION"],
     extras_require={
-        'dev': PROJECT_DEV_DEPENDENCIES
+        'dev': PROJECT["DEV_DEPENDENCIES"]
     },
     package_data={
-        PROJECT_NAME: ["version.prop"]
+        PROJECT["NAME"]: ["version.prop"]
     },
     license="GPL",
     # https://pypi.org/classifiers/
