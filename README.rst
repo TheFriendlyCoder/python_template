@@ -10,14 +10,18 @@ Creating a new project
 
 * clone the project files
 * update all references to 'ksp_sample' in all files to the name of the new project
+
   * ./docs/conf.py
   * ./setup.py
   * ./tox.ini
   * ./README.rst
   * ./.travis.yml
   * ./tests/test_version.py
+
 * update all references to "python_template" in all files to the name of the new project
+
   * ./README.rst
+
 * rename the 'src/ksp_sample' subfolder to reflect the new project name
 * update the project specific parameters in the setup.py file in the root folder
 * activate project on `travis-ci.org <https://travis-ci.org/>`_
@@ -61,7 +65,6 @@ Creating a new project
   * click on the "repositories" button at the top
   * wait for the project list to refresh and show your new project
   * click the "Activate" button next to your repo
-  * TBD: See if I need to set up a webhook to get this working
 
 * modify the 'fail_under' value in the .coveragerc file to a reasonable value for unit test coverage (ie: 90% say)
 * For consistency, set the following to the same 'short descriptive' text for the project:
@@ -75,8 +78,8 @@ Using the project
 -----------------
 
 * to generate a package do the following: :code:`python setup.py bdist_wheel`
-* to upload a new version to pypi, do the following: :code:`twine upload ./dist/*.whl`
-* update API docs as follows: :code:`sphinx-apidoc --force --separate -o ./docs proj_name`
+* uploading of new versions to pypi is handled automatically via Travis CI
+* generating up to date API docs is handled automatically to tox
 * to generate HTML docs run the following from the root folder: :code:`python setup.py build_sphinx`
 * make sure to add any new project dependencies to the setup.py as requirements change
 
@@ -86,7 +89,6 @@ TIPS
 * make sure your project name doesn't use underscores in the name because pypi packages will convert them to dashes when being published which creates a subtle discrepancy between the module name and the package name, which can lead to confusion
 * make sure your project name doesn't use dashes in the name because you'll need to name your module with the dash for consistency but then the project will fail the PEP8 validation check because the name doesn't satisfy the snake-case naming requirements.
 * to make some of the badges work you'll need to upload a version to pypi
-* you need to generate a package first before using twine to upload it to pypi
 * all development work should be done in a local virtual environment under a ./venv subfolder (ie: :code:`virtualenv -p python3 ./venv && . ./venv/bin/activate` )
 * you can add PyCharm projects to the repo. Just exclude the files listed in the .gitignore file.
 
