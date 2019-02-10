@@ -173,43 +173,68 @@ def get_version_number(project):
     return retval
 
 
-def generate_readme(project, repo=None):
+def generate_readme(project, repo=None, version=None):
     """Generates a readme for the Python package, based on the readme file
 
     :param str project: name of the project to generate the readme for
     :param str repo:
         optional name of the git repo for the project
         if not provided, it is assumed the repo name matches the project name
+    :param str version:
+        optional version of the package being generated
+        when not provided, the "
     :returns: readme text for the package
     :rtype: :class:`str`
     """
     if repo is None:
         repo = project
 
+    if not version or "dev" in version:
+        branch = "branch=master"
+        version = "latest"
+
+    else:
+        branch = "tag=" + version
+
     headers = list()
     headers.append({
-        "image": "https://travis-ci.org/TheFriendlyCoder/{0}.svg?branch=master".format(repo),
-        "target": "https://travis-ci.org/TheFriendlyCoder/{0}".format(repo),
+        "image":
+            "https://travis-ci.org/TheFriendlyCoder/{0}.svg?{1}".
+            format(repo, branch),
+        "target":
+            "https://travis-ci.org/TheFriendlyCoder/{0}".
+            format(repo),
         "text": "Build Automation"
     })
     headers.append({
-        "image": "https://coveralls.io/repos/github/TheFriendlyCoder/{0}/badge.svg?branch=master".format(repo),
-        "target": "https://coveralls.io/github/TheFriendlyCoder/{0}?branch=master".format(repo),
+        "image": "https://coveralls.io/repos/github/TheFriendlyCoder/{0}/"
+                 "badge.svg?{1}".format(repo, branch),
+        "target":
+            "https://coveralls.io/github/TheFriendlyCoder/{0}?{1}".
+            format(repo, branch),
         "text": "Test Coverage"
     })
     headers.append({
-        "image": "https://img.shields.io/pypi/pyversions/{0}.svg".format(project),
+        "image":
+            "https://img.shields.io/pypi/pyversions/{0}.svg".
+            format(project),
         "target": "https://pypi.python.org/pypi/{0}".format(project),
         "text": "Python Versions"
     })
     headers.append({
-        "image": "https://readthedocs.org/projects/{0}/badge/?version=latest".format(project),
-        "target": "http://{0}.readthedocs.io/en/latest/?badge=latest".format(project),
+        "image":
+            "https://readthedocs.org/projects/{0}/badge/?version={1}".
+            format(project, version),
+        "target": "http://{0}.readthedocs.io/en/{1}".format(project, version),
         "text": "Documentation Status"
     })
     headers.append({
-        "image": "https://requires.io/github/TheFriendlyCoder/{0}/requirements.svg?branch=master".format(repo),
-        "target": "https://requires.io/github/TheFriendlyCoder/{0}/requirements/?branch=master".format(repo),
+        "image":
+            "https://requires.io/github/TheFriendlyCoder/{0}/"
+            "requirements.svg?{1}".format(repo, branch),
+        "target":
+            "https://requires.io/github/TheFriendlyCoder/{0}/"
+            "requirements/?{1}".format(repo, branch),
         "text": "Requirements Status"
     })
     headers.append({
@@ -236,23 +261,27 @@ def generate_readme(project, repo=None):
 
     retval = ""
     for cur_header in headers:
-        retval += header_template.format(cur_header["image"], cur_header["target"], cur_header["text"])
+        retval += header_template.format(
+            cur_header["image"], cur_header["target"], cur_header["text"])
         retval += "\n"
 
     retval += open('README.rst').read()
 
     return retval
 
+
 # Execute packaging logic
+PROJECT_VERSION = get_version_number(PROJECT_NAME)
 setup(
     name=PROJECT_NAME,
-    version=get_version_number(PROJECT_NAME),
+    version=PROJECT_VERSION,
     author='Kevin S. Phillips',
     author_email='thefriendlycoder@gmail.com',
     packages=find_packages('src'),
     package_dir={'': 'src'},
     description=PROJECT_DESCRIPTION,
-    long_description=generate_readme(PROJECT_NAME, PROJECT_REPO),
+    long_description=
+    generate_readme(PROJECT_NAME, PROJECT_REPO, PROJECT_VERSION),
     url='https://github.com/TheFriendlyCoder/' + PROJECT_NAME,
     keywords=PROJECT_KEYWORDS,
     entry_points={
