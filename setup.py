@@ -147,6 +147,12 @@ def get_version_number(project):
     retval = _src_version(project)
 
     if 'TRAVIS_TAG' in os.environ and not os.environ['TRAVIS_TAG'] == '':
+        # HACK: Let us assume we're going to use the tag name
+        #       when building the template project. Makes it
+        #       easier to test release builds
+        if project == "ksp_sample":
+            return os.environ['TRAVIS_TAG']
+
         # make sure the tag name matches our version number
         if not os.environ['TRAVIS_TAG'] == retval:
             raise Exception("Tag {0} is expected to be {1}".format(
