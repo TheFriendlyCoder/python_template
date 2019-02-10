@@ -53,7 +53,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'ksp_sample'
-copyright = '2016, Kevin S. Phillips'
+copyright = '2019, Kevin S. Phillips'
 author = 'Kevin S. Phillips'
 
 # The version info for the project you're documenting, acts as replacement for
