@@ -179,7 +179,6 @@ def generate_readme(project):
     :returns: readme text for the package
     :rtype: :class:`str`
     """
-    print(project)
     headers = list()
     headers.append({
         "image": "https://travis-ci.org/TheFriendlyCoder/python_template.svg?branch=master",
@@ -192,13 +191,13 @@ def generate_readme(project):
         "text": "Test Coverage"
     })
     headers.append({
-        "image": "https://img.shields.io/pypi/pyversions/ksp_sample.svg",
-        "target": "https://pypi.python.org/pypi/ksp_sample",
+        "image": "https://img.shields.io/pypi/pyversions/{0}.svg".format(project),
+        "target": "https://pypi.python.org/pypi/{0}".format(project),
         "text": "Python Versions"
     })
     headers.append({
-        "image": "https://readthedocs.org/projects/ksp_sample/badge/?version=latest",
-        "target": "http://ksp_sample.readthedocs.io/en/latest/?badge=latest",
+        "image": "https://readthedocs.org/projects/{0}/badge/?version=latest".format(project),
+        "target": "http://{0}.readthedocs.io/en/latest/?badge=latest".format(project),
         "text": "Documentation Status"
     })
     headers.append({
@@ -207,17 +206,17 @@ def generate_readme(project):
         "text": "Requirements Status"
     })
     headers.append({
-        "image": "https://img.shields.io/pypi/format/ksp_sample.svg",
-        "target": "https://pypi.python.org/pypi/ksp_sample/",
+        "image": "https://img.shields.io/pypi/format/{0}.svg".format(project),
+        "target": "https://pypi.python.org/pypi/{0}/".format(project),
         "text": "Package Format"
     })
     headers.append({
-        "image": "https://img.shields.io/pypi/dm/ksp_sample.svg",
-        "target": "https://pypi.python.org/pypi/ksp_sample/",
+        "image": "https://img.shields.io/pypi/dm/{0}.svg".format(project),
+        "target": "https://pypi.python.org/pypi/{0}/".format(project),
         "text": "Download Count"
     })
     headers.append({
-        "image": "https://img.shields.io/pypi/l/ksp_sample.svg",
+        "image": "https://img.shields.io/pypi/l/{0}.svg".format(project),
         "target": "https://www.gnu.org/licenses/gpl-3.0-standalone.html",
         "text": "GPL License"
     })
