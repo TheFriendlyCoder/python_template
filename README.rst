@@ -1,37 +1,9 @@
 Overview
 ========
 
-.. image:: https://travis-ci.org/TheFriendlyCoder/python_template.svg?branch=master
-    :target: https://travis-ci.org/TheFriendlyCoder/python_template
-    :alt: Build Automation
-
-.. image:: https://coveralls.io/repos/github/TheFriendlyCoder/python_template/badge.svg?branch=master
-    :target: https://coveralls.io/github/TheFriendlyCoder/python_template?branch=master
-    :alt: Test Coverage
-
-.. image:: https://img.shields.io/pypi/pyversions/ksp_sample.svg
-    :target: https://pypi.python.org/pypi/ksp_sample
-    :alt: Python Versions
-
-.. image:: https://readthedocs.org/projects/ksp_sample/badge/?version=latest
-    :target: http://ksp_sample.readthedocs.io/en/latest/?badge=latest
-    :alt: Documentation Status
-
-.. image:: https://requires.io/github/TheFriendlyCoder/python_template/requirements.svg?branch=master
-     :target: https://requires.io/github/TheFriendlyCoder/python_template/requirements/?branch=master
-     :alt: Requirements Status
-
-.. image:: https://img.shields.io/pypi/format/ksp_sample.svg
-    :target: https://pypi.python.org/pypi/ksp_sample/
-    :alt: Package Format
-
-.. image:: https://img.shields.io/pypi/dm/ksp_sample.svg
-    :target: https://pypi.python.org/pypi/ksp_sample/
-    :alt: Download Count
-
-.. image:: https://img.shields.io/pypi/l/ksp_sample.svg
-    :target: https://www.gnu.org/licenses/gpl-3.0-standalone.html
-    :alt: GPL License
+This is a template project I use for my personal projects, to remind me how
+to set up projects, folder structures, etc. and how to integrate the projects
+with Travis CI, PyPI, and other such services.
 
 Creating a new project
 -----------------------

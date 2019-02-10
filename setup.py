@@ -171,6 +171,72 @@ def get_version_number(project):
 
     return retval
 
+
+def generate_readme(project):
+    """Generates a readme for the Python package, based on the readme file
+
+    :param str project: name of the project to generate the readme for
+    :returns: readme text for the package
+    :rtype: :class:`str`
+    """
+    print(project)
+    headers = list()
+    headers.append({
+        "image": "https://travis-ci.org/TheFriendlyCoder/python_template.svg?branch=master",
+        "target": "https://travis-ci.org/TheFriendlyCoder/python_template",
+        "text": "Build Automation"
+    })
+    headers.append({
+        "image": "https://coveralls.io/repos/github/TheFriendlyCoder/python_template/badge.svg?branch=master",
+        "target": "https://coveralls.io/github/TheFriendlyCoder/python_template?branch=master",
+        "text": "Test Coverage"
+    })
+    headers.append({
+        "image": "https://img.shields.io/pypi/pyversions/ksp_sample.svg",
+        "target": "https://pypi.python.org/pypi/ksp_sample",
+        "text": "Python Versions"
+    })
+    headers.append({
+        "image": "https://readthedocs.org/projects/ksp_sample/badge/?version=latest",
+        "target": "http://ksp_sample.readthedocs.io/en/latest/?badge=latest",
+        "text": "Documentation Status"
+    })
+    headers.append({
+        "image": "https://requires.io/github/TheFriendlyCoder/python_template/requirements.svg?branch=master",
+        "target": "https://requires.io/github/TheFriendlyCoder/python_template/requirements/?branch=master",
+        "text": "Requirements Status"
+    })
+    headers.append({
+        "image": "https://img.shields.io/pypi/format/ksp_sample.svg",
+        "target": "https://pypi.python.org/pypi/ksp_sample/",
+        "text": "Package Format"
+    })
+    headers.append({
+        "image": "https://img.shields.io/pypi/dm/ksp_sample.svg",
+        "target": "https://pypi.python.org/pypi/ksp_sample/",
+        "text": "Download Count"
+    })
+    headers.append({
+        "image": "https://img.shields.io/pypi/l/ksp_sample.svg",
+        "target": "https://www.gnu.org/licenses/gpl-3.0-standalone.html",
+        "text": "GPL License"
+    })
+
+    header_template = """.. image:: {0}
+    :target: {1}
+    :alt: {2}
+
+    """
+
+    retval = ""
+    for cur_header in headers:
+        retval += header_template.format(cur_header["image"], cur_header["target"], cur_header["text"])
+        retval += "\n"
+
+    retval += open('README.rst').read()
+
+    return retval
+
 # Execute packaging logic
 setup(
     name=PROJECT_NAME,
@@ -180,7 +246,7 @@ setup(
     packages=find_packages('src'),
     package_dir={'': 'src'},
     description=PROJECT_DESCRIPTION,
-    long_description=open('README.rst').read(),
+    long_description=generate_readme(PROJECT_NAME),
     url='https://github.com/TheFriendlyCoder/' + PROJECT_NAME,
     keywords=PROJECT_KEYWORDS,
     entry_points={
