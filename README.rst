@@ -11,7 +11,6 @@ Creating a new project
 * clone the project files
 * update all references to 'ksp_sample' in all files to the name of the new project
 
-  * ./docs/conf.py
   * ./tox.ini
   * ./tests/test_version.py
 

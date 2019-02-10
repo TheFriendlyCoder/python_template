@@ -17,9 +17,10 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import os
-import sys
-sys.path.insert(0, os.path.abspath('../src'))
+import ast
+# import os
+# import sys
+# sys.path.insert(0, os.path.abspath('../src'))
 
 # -- General configuration ------------------------------------------------
 
@@ -52,17 +53,19 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'ksp_sample'
+
 copyright = '2019, Kevin S. Phillips'
 author = 'Kevin S. Phillips'
-
+_proj_props = ast.literal_eval(open('../project.prop').read())
+_proj_props["VERSION"] = \
+    ast.literal_eval(open("../src/" + _proj_props["NAME"] + "/version.prop").read())
+project = _proj_props["NAME"]
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
-import ksp_sample.version
 # The short X.Y version.
-version = ksp_sample.version.__version__
+version = _proj_props["VERSION"]
 # The full version, including alpha/beta/rc tags.
 release = version
 
