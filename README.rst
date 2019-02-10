@@ -9,13 +9,10 @@ Creating a new project
 -----------------------
 
 * clone the project files
-* update all references to 'ksp_sample' in all files to the name of the new project
-
-  * ./tox.ini
-  * ./tests/test_version.py
-
 * rename the 'src/ksp_sample' subfolder to reflect the new project name
 * update the project specific parameters in the 'project.prop' file in the root folder
+* update the import path in the "./tests/test_version.py" script to reflect
+  your new project name
 * activate project on `travis-ci.org <https://travis-ci.org/>`_
 
   * log in to the Travis CI website
@@ -71,9 +68,11 @@ Using the project
 
 * to generate a package do the following: :code:`python setup.py bdist_wheel`
 * uploading of new versions to pypi is handled automatically via Travis CI
-* generating up to date API docs is handled automatically to tox
-* to generate HTML docs run the following from the root folder: :code:`python setup.py build_sphinx`
-* make sure to add any new project dependencies to the setup.py as requirements change
+* generating up to date API docs is handled automatically by tox
+* to generate HTML docs run the following from the root folder:
+  :code:`python setup.py build_sphinx`
+* make sure to add any new project dependencies to the project.prop file
+  as requirements change
 
 TIPS
 ----
