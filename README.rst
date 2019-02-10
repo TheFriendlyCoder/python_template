@@ -68,6 +68,12 @@ Using the project
 
 * to generate a package do the following: :code:`python setup.py bdist_wheel`
 * uploading of new versions to pypi is handled automatically via Travis CI
+
+  * NOTE: After tagging a new release, you will need to enable the docs for
+    the release on readthedocs.org. Log in, locate the project in question,
+    click on settings -> versions and make sure the check box labelled
+    "active" is checked for the new version.
+
 * Updating the API docs and generating sample HTML output is done as follows:
   :code:`tox -e py3-docs`
 * make sure to add any new project dependencies to the project.prop file
