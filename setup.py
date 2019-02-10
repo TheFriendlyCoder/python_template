@@ -7,6 +7,7 @@ from setuptools import setup, find_packages
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 # project specific parameters
 PROJECT_NAME = 'ksp_sample'
+PROJECT_REPO = 'python_template'
 PROJECT_DEPENDENCIES = [
     'six'
 ]
@@ -172,22 +173,28 @@ def get_version_number(project):
     return retval
 
 
-def generate_readme(project):
+def generate_readme(project, repo=None):
     """Generates a readme for the Python package, based on the readme file
 
     :param str project: name of the project to generate the readme for
+    :param str repo:
+        optional name of the git repo for the project
+        if not provided, it is assumed the repo name matches the project name
     :returns: readme text for the package
     :rtype: :class:`str`
     """
+    if repo is None:
+        repo = project
+
     headers = list()
     headers.append({
-        "image": "https://travis-ci.org/TheFriendlyCoder/python_template.svg?branch=master",
-        "target": "https://travis-ci.org/TheFriendlyCoder/python_template",
+        "image": "https://travis-ci.org/TheFriendlyCoder/{0}.svg?branch=master".format(repo),
+        "target": "https://travis-ci.org/TheFriendlyCoder/{0}".format(repo),
         "text": "Build Automation"
     })
     headers.append({
-        "image": "https://coveralls.io/repos/github/TheFriendlyCoder/python_template/badge.svg?branch=master",
-        "target": "https://coveralls.io/github/TheFriendlyCoder/python_template?branch=master",
+        "image": "https://coveralls.io/repos/github/TheFriendlyCoder/{0}/badge.svg?branch=master".format(repo),
+        "target": "https://coveralls.io/github/TheFriendlyCoder/{0}?branch=master".format(repo),
         "text": "Test Coverage"
     })
     headers.append({
@@ -201,8 +208,8 @@ def generate_readme(project):
         "text": "Documentation Status"
     })
     headers.append({
-        "image": "https://requires.io/github/TheFriendlyCoder/python_template/requirements.svg?branch=master",
-        "target": "https://requires.io/github/TheFriendlyCoder/python_template/requirements/?branch=master",
+        "image": "https://requires.io/github/TheFriendlyCoder/{0}/requirements.svg?branch=master".format(repo),
+        "target": "https://requires.io/github/TheFriendlyCoder/{0}/requirements/?branch=master".format(repo),
         "text": "Requirements Status"
     })
     headers.append({
@@ -245,7 +252,7 @@ setup(
     packages=find_packages('src'),
     package_dir={'': 'src'},
     description=PROJECT_DESCRIPTION,
-    long_description=generate_readme(PROJECT_NAME),
+    long_description=generate_readme(PROJECT_NAME, PROJECT_REPO),
     url='https://github.com/TheFriendlyCoder/' + PROJECT_NAME,
     keywords=PROJECT_KEYWORDS,
     entry_points={
