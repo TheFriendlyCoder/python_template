@@ -5,8 +5,8 @@ Overview
     :target: https://travis-ci.org/TheFriendlyCoder/ksp_sample
     :alt: Build Automation
 
-.. image:: https://coveralls.io/repos/github/TheFriendlyCoder/ksp_sample/badge.svg?branch=master
-    :target: https://coveralls.io/github/TheFriendlyCoder/ksp_sample?branch=master
+.. image:: https://coveralls.io/repos/github/TheFriendlyCoder/python_template/badge.svg?branch=master
+    :target: https://coveralls.io/github/TheFriendlyCoder/python_template?branch=master
     :alt: Test Coverage
 
 .. image:: https://img.shields.io/pypi/pyversions/ksp_sample.svg
@@ -17,8 +17,8 @@ Overview
     :target: http://ksp_sample.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
-.. image:: https://requires.io/github/TheFriendlyCoder/ksp_sample/requirements.svg?branch=master
-     :target: https://requires.io/github/TheFriendlyCoder/ksp_sample/requirements/?branch=master
+.. image:: https://requires.io/github/TheFriendlyCoder/python_template/requirements.svg?branch=master
+     :target: https://requires.io/github/TheFriendlyCoder/python_template/requirements/?branch=master
      :alt: Requirements Status
 
 .. image:: https://img.shields.io/pypi/format/ksp_sample.svg
@@ -44,6 +44,8 @@ Creating a new project
   * ./README.rst
   * ./.travis.yml
   * ./tests/test_version.py
+* update all references to "python_template" in all files to the name of the new project
+  * ./README.rst
 * rename the 'src/ksp_sample' subfolder to reflect the new project name
 * update the project specific parameters in the setup.py file in the root folder
 * activate project on `travis-ci.org <https://travis-ci.org/>`_
