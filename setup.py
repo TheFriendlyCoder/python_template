@@ -104,38 +104,11 @@ def _src_version(project):
     :returns: the version for the specified project
     :rtype: :class:`str`
     """
-    # To prevent circular dependencies between the setup script and the
-    # project code, we need to parse the version.py file independently
-    # without importing anything from the project itself
-    retval = None
-
-    ver_path = os.path.join(os.getcwd(), 'src', project, 'version.py')
+    ver_path = os.path.join(os.getcwd(), 'src', project, 'version.prop')
     assert os.path.exists(ver_path)
 
-    with open(ver_path) as ver_file:
-        data = ver_file.read()
-
-    for cur_node in ast.parse(data).body:
-        # We only care about assignment statements, as we look for a line
-        # that resembles `__version__ = "1.2.3"`
-        if not isinstance(cur_node, ast.Assign):
-            continue
-
-        # In the off chance that there are multiple assignment statements
-        # in our version file, lets search for one that involves a variable
-        # named "__version__"
-        found_version = False
-        for cur_target in cur_node.targets:
-            if cur_target.id == "__version__":
-                found_version = True
-                break
-        if not found_version:
-            continue
-
-        assert isinstance(cur_node.value, ast.Str)
-
-        retval = cur_node.value.s
-        break
+    data = open(ver_path).read()
+    retval = ast.literal_eval(data)
 
     assert retval is not None
     assert _verify_src_version(retval)
@@ -291,6 +264,9 @@ setup(
     python_requires=PROJECT_SUPPORTED_PYTHON_VERSION,
     extras_require={
         'dev': PROJECT_DEV_DEPENDENCIES
+    },
+    package_data={
+        PROJECT_NAME: ["version.prop"]
     },
     license="GPL",
     # https://pypi.org/classifiers/
