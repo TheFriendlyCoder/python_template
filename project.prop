@@ -5,7 +5,7 @@
     "NAME" : "ksp_sample",
     "REPO" : "python_template",
     "DEPENDENCIES" : [
-        'six'
+        "six"
     ],
     "DEV_DEPENDENCIES" : [
         "twine",
