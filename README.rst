@@ -10,7 +10,11 @@ Creating a new project
 
 * clone the project files
 * rename the 'src/ksp_sample' subfolder to reflect the new project name
-* update the project specific parameters in the 'project.prop' file in the root folder
+
+  * For best results, you should name your Git repo the same name as your
+    project
+* update the project specific parameters in the 'project.prop' file in the
+  root folder
 * update the import path in the "./tests/test_version.py" script to reflect
   your new project name
 * activate project on `travis-ci.org <https://travis-ci.org/>`_
@@ -21,23 +25,29 @@ Creating a new project
   * refresh your browser page to make sure your list of projects is up to date
   * find your project in the list and click the slider to turn on support
   * click the small cog icon next to your new project to configure settings
-  * Under environment variables, define the following variables (needed to publish Python packages):
+  * Under environment variables, define the following variables (needed to
+    publish Python packages):
 
     * *DEPLOY_USER* User name to log in to PyPI package repository
     * *DEPLOY_PASS* Password for the PyPI user
 
   * Under cron set the master branch to build once a month
-  * so long as your project has a .travisci.yml file in the root folder the build should automatically start
+  * so long as your project has a .travisci.yml file in the root folder the
+    build should automatically start
 
 * activate project on `readthedocs.org <https://readthedocs.org/>`_
 
   * log in to the ReadTheDocs website
-  * click the drop-down list on your name in the top-left corner and select "My Projects"
+  * click the drop-down list on your name in the top-left corner and select
+    "My Projects"
   * click "Import a Project"
-  * To import automatically, try clicking the "Refresh" button to load your Github projects, and select the one(s) to load
+  * To import automatically, try clicking the "Refresh" button to load your
+    Github projects, and select the one(s) to load
   * To import manually, click "Import Manually"
-  * Under "Name of Project" enter the name of the Github project without the URL or .git extension
-  * Under the "Repository URL" field, copy-paste the HTTPS URL used for cloning the Github project
+  * Under "Name of Project" enter the name of the Github project without the
+    URL or .git extension
+  * Under the "Repository URL" field, copy-paste the HTTPS URL used for cloning
+    the Github project
   * Check the "Advanced Options" check box and click "Next"
   * Fill out the advanced properties as desired
 
@@ -55,8 +65,10 @@ Creating a new project
   * wait for the project list to refresh and show your new project
   * click the "Activate" button next to your repo
 
-* modify the 'fail_under' value in the .coveragerc file to a reasonable value for unit test coverage (ie: 90% say)
-* For consistency, set the following to the same 'short descriptive' text for the project:
+* modify the 'fail_under' value in the .coveragerc file to a reasonable value
+  for unit test coverage (ie: 90% say)
+* For consistency, set the following to the same 'short descriptive' text for
+  the project:
 
   * title on GitHub project
   * description of readthedocs page
@@ -82,11 +94,20 @@ Using the project
 TIPS
 ----
 
-* make sure your project name doesn't use underscores in the name because pypi packages will convert them to dashes when being published which creates a subtle discrepancy between the module name and the package name, which can lead to confusion
-* make sure your project name doesn't use dashes in the name because you'll need to name your module with the dash for consistency but then the project will fail the PEP8 validation check because the name doesn't satisfy the snake-case naming requirements.
+* make sure your project name doesn't use underscores in the name because pypi
+  packages will convert them to dashes when being published which creates a
+  subtle discrepancy between the module name and the package name, which can
+  lead to confusion
+* make sure your project name doesn't use dashes in the name because you'll
+  need to name your module with the dash for consistency but then the project
+  will fail the PEP8 validation check because the name doesn't satisfy the
+  snake-case naming requirements.
 * to make some of the badges work you'll need to upload a version to pypi
-* all development work should be done in a local virtual environment under a ./venv subfolder (ie: :code:`virtualenv -p python3 ./venv && . ./venv/bin/activate` )
-* you can add PyCharm projects to the repo. Just exclude the files listed in the .gitignore file.
+* all development work should be done in a local virtual environment under
+  a ./venv subfolder
+  (ie: :code:`virtualenv -p python3 ./venv && . ./venv/bin/activate` )
+* you can add PyCharm projects to the repo. Just exclude the files listed in
+  the .gitignore file.
 
 Links
 -----
