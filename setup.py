@@ -271,7 +271,7 @@ setup(
             "project.prop",
             os.path.join("src", PROJECT["NAME"], "version.prop")
             ]
-         ),
+        ),
     ],
     package_data={
         PROJECT["NAME"]: ["version.prop"]
