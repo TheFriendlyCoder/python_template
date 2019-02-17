@@ -1,12 +1,11 @@
 """Project Short Description"""
 import logging
-import os
 import ast
+import pkg_resources
 
-_CUR_FILE = os.path.realpath(__file__)
-_CUR_PATH = os.path.split(_CUR_FILE)[0]
-with open(os.path.join(_CUR_PATH, 'version.prop')) as prop_file:
-    _PROPS = prop_file.read()
-__version__ = ast.literal_eval(_PROPS)
+__version__ = ast.literal_eval(
+    pkg_resources.resource_string(__name__, "version.prop").decode("utf-8")
+)
+
 
 logging.getLogger(__name__).addHandler(logging.NullHandler())

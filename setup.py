@@ -83,7 +83,8 @@ def _src_version(project):
     :returns: the version for the specified project
     :rtype: :class:`str`
     """
-    ver_path = os.path.join(os.getcwd(), 'src', project, 'version.prop')
+    root_dir = os.path.dirname(__file__)
+    ver_path = os.path.join(root_dir, 'src', project, 'version.prop')
     assert os.path.exists(ver_path)
 
     with open(ver_path) as prop_file:
@@ -230,9 +231,8 @@ def load_project_properties():
     :returns: project properties
     :rtype: :class:`dict`
     """
-    cur_file = os.path.realpath(__file__)
-    cur_path = os.path.split(cur_file)[0]
-    with open(os.path.join(cur_path, 'project.prop')) as prop_file:
+    src_path = os.path.dirname(__file__)
+    with open(os.path.join(src_path, 'project.prop')) as prop_file:
         props = prop_file.read()
     return ast.literal_eval(props)
 
@@ -261,6 +261,18 @@ setup(
     extras_require={
         'dev': PROJECT["DEV_DEPENDENCIES"]
     },
+    # The following support files are needed by this setup.py script
+    # These files are not deployed with the project when building a wheel
+    # file, and thus are only used by sdist builds. In turn, these are
+    # required by tox to run unit tests because tox does not currently
+    # support running tests from a dynamically generated wheel file.
+    data_files=[
+        ("", [
+            "project.prop",
+            os.path.join("src", PROJECT["NAME"], "version.prop")
+            ]
+         ),
+    ],
     package_data={
         PROJECT["NAME"]: ["version.prop"]
     },
