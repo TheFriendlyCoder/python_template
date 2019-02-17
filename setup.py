@@ -33,7 +33,7 @@ def load_console_scripts(project):
         list of shell scripts exposed by this project. Produces an empty
         list if there are no shell scripts supported by the project.
     """
-    scripts_path = os.path.join(project, 'scripts')
+    scripts_path = os.path.join('src', project, 'scripts')
     if not os.path.exists(scripts_path):
         return []
 
