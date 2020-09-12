@@ -17,6 +17,8 @@ Creating a new project
   root folder
 * update the import path in the "./tests/test_version.py" script to reflect
   your new project name
+* update the PROJECT_PATH variable in "./tox.ini" to reflect your new project
+  name
 * activate project on `travis-ci.org <https://travis-ci.org/>`_
 
   * log in to the Travis CI website
@@ -87,7 +89,7 @@ Using the project
     "active" is checked for the new version.
 
 * Updating the API docs and generating sample HTML output is done as follows:
-  :code:`tox -e py3-docs`
+  :code:`tox -e py38-docs`
 * make sure to add any new project dependencies to the project.prop file
   as requirements change
 
