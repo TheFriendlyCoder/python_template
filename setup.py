@@ -7,33 +7,30 @@ from setuptools import setup, find_packages
 
 def load_console_scripts(project):
     """Generates list of 'entry point' functions for use by Python setup tools
-
     Each element in this list defines the name and entry point function for each
     python script included with the current project that is to be exposed to
     user's shells when the package is installed.
-
     This script assumes that any python script found in a folder named 'scripts'
     under the project folder is to be exposed on the shell during deployment.
     Further, this script assumes that all such scripts expose a public function
     called 'main' which will act as the primary entry point for the script. This
     function will then be responsible for parsing any supported command line
     parameters and executing the appropriate functionality.
-
     The output from this function can be provided to the setuptools.setup()
     function, something like this:
-
     entry_points={
         'console_scripts': load_console_scripts(project_name)
     }
-
-    :param str project:
-        the name of the current project. It is also assumed that the project
-        sources will be located under a sub-folder of the same name.
-    :return:
-        list of shell scripts exposed by this project. Produces an empty
-        list if there are no shell scripts supported by the project.
+    Args:
+        project (str):
+            the name of the current project. It is also assumed that the project
+            sources will be located under a sub-folder of the same name.
+    Return:
+        list (str):
+            list of shell scripts exposed by this project. Produces an empty
+            list if there are no shell scripts supported by the project.
     """
-    scripts_path = os.path.join('src', project, 'scripts')
+    scripts_path = os.path.join(project, 'scripts')
     if not os.path.exists(scripts_path):
         return []
 
@@ -55,12 +52,11 @@ def load_console_scripts(project):
 
 def _verify_src_version(version):
     """Checks to make sure an arbitrary character string is a valid version id
-
     Version numbers are expected to be of the form X.Y.Z
-
-    :param str version: string to validate
-    :returns: True if the string is a version number, else false
-    :rtype: :class:`bool`
+    Args:
+        version (str): string to validate
+    Returns:
+        bool: True if the string is a version number, else false
     """
     if not isinstance(version, str):
         return False
@@ -78,26 +74,41 @@ def _verify_src_version(version):
 
 def _src_version(project):
     """Parses the version number from the source project
-
-    :param str project: the name of the project to get the version for
-    :returns: the version for the specified project
-    :rtype: :class:`str`
+    Args:
+        project (str): the name of the project to get the version for
+    Returns:
+        str: the version for the specified project
     """
     root_dir = os.path.dirname(__file__)
-    ver_path = os.path.join(root_dir, 'src', project, 'version.prop')
+    ver_path = os.path.join(root_dir, 'src', project, 'version.py')
     assert os.path.exists(ver_path)
 
     with open(ver_path) as prop_file:
-        data = prop_file.read()
-    retval = ast.literal_eval(data)
+        data = ast.parse(prop_file.read())
 
-    assert retval is not None
-    assert _verify_src_version(retval)
-    return retval
+    # The version.py file is expected to contain only a single statement
+    # of the form:
+    #       __version__ = "1.2.3"
+    for cur_statement in data.body:
+        if not isinstance(cur_statement, ast.Assign):
+            continue
+        assert len(cur_statement.targets) == 1
+        assert cur_statement.targets[0].id == "__version__"
+        assert isinstance(cur_statement.value, ast.Str)
+
+        # If we get here we know the one statement in the version module has
+        # a string value with the version number in it, so we just return it
+        # here
+        return cur_statement.value.s
 
 
 def get_version_number(project):
-    """Retrieves the version number for a project"""
+    """Retrieves the version number for a project
+    Args:
+        project (str): name of the project
+    Returns:
+        str: Version associated with the project
+    """
 
     retval = _src_version(project)
 
@@ -129,16 +140,18 @@ def get_version_number(project):
 
 def generate_readme(project, repo=None, version=None):
     """Generates a readme for the Python package, based on the readme file
-
-    :param str project: name of the project to generate the readme for
-    :param str repo:
-        optional name of the git repo for the project
-        if not provided, it is assumed the repo name matches the project name
-    :param str version:
-        optional version of the package being generated
-        when not provided, the "
-    :returns: readme text for the package
-    :rtype: :class:`str`
+    Args:
+        project (str):
+            name of the project to generate the readme for
+        repo (str):
+            optional name of the git repo for the project
+            if not provided, it is assumed the repo name matches the project
+            name
+        version (str):
+            optional version of the package being generated
+            when not provided, the readme will use 'latest' instead
+    Returns:
+        str: readme text for the package
     """
     if repo is None:
         repo = project
@@ -203,14 +216,13 @@ def generate_readme(project, repo=None, version=None):
     })
     headers.append({
         "image": "https://img.shields.io/pypi/l/{0}.svg".format(project),
-        "target": "https://www.gnu.org/licenses/gpl-3.0-standalone.html",
-        "text": "GPL License"
+        "target": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+        "text": "Apache License 2.0"
     })
 
     header_template = """.. image:: {0}
     :target: {1}
     :alt: {2}
-
     """
 
     retval = ""
@@ -219,21 +231,16 @@ def generate_readme(project, repo=None, version=None):
             cur_header["image"], cur_header["target"], cur_header["text"])
         retval += "\n"
 
-    with open('README.rst') as readme:
-        retval += readme.read()
+    retval += open('README.rst').read()
 
     return retval
 
 
 def load_project_properties():
-    """Loads project specific properties from the project.prop file
-
-    :returns: project properties
-    :rtype: :class:`dict`
-    """
-    src_path = os.path.dirname(__file__)
-    with open(os.path.join(src_path, 'project.prop')) as prop_file:
-        props = prop_file.read()
+    """dict: Loads project specific properties from the project.prop file"""
+    cur_file = os.path.realpath(__file__)
+    cur_path = os.path.split(cur_file)[0]
+    props = open(os.path.join(cur_path, 'project.prop')).read()
     return ast.literal_eval(props)
 
 
@@ -261,32 +268,15 @@ setup(
     extras_require={
         'dev': PROJECT["DEV_DEPENDENCIES"]
     },
-    # The following support files are needed by this setup.py script
-    # These files are not deployed with the project when building a wheel
-    # file, and thus are only used by sdist builds. In turn, these are
-    # required by tox to run unit tests because tox does not currently
-    # support running tests from a dynamically generated wheel file.
-    data_files=[
-        ("", [
-            "project.prop",
-            os.path.join("src", PROJECT["NAME"], "version.prop")
-            ]
-        ),
-    ],
-    package_data={
-        PROJECT["NAME"]: ["version.prop"]
-    },
-    license="GPL",
+    license="Apache License 2.0",
     # https://pypi.org/classifiers/
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Environment :: Console",
-        "License :: OSI Approved :: "
-        "GNU General Public License v3 or later (GPLv3+)",
+        "License :: OSI Approved :: Apache Software License",
         "Topic :: Software Development :: Libraries",
         "Natural Language :: English",
         "Operating System :: OS Independent",
-        "Programming Language :: Python :: 2",
         "Programming Language :: Python :: 3",
     ]
 )
